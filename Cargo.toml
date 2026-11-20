@@ -7,7 +7,6 @@ description = "Token-minimized, human-readable Git diff CLI for terminals and AI
 readme = "README.md"
 license = "MIT"
 repository = "https://github.com/HardBoss07/better-git-diff"
-homepage = "https://github.com/HardBoss07/better-git-diff"
 documentation = "https://github.com/HardBoss07/better-git-diff#readme"
 keywords = ["git", "diff", "cli", "ai", "llm"]
 categories = ["command-line-utilities", "development-tools"]
