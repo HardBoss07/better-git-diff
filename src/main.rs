@@ -21,7 +21,7 @@ fn main() -> ExitCode {
     match run() {
         Ok(()) => ExitCode::SUCCESS,
         Err(err) => {
-            eprintln!("bgd: {err}");
+            eprintln!("better-git-diff: {err}");
             ExitCode::FAILURE
         }
     }
@@ -33,17 +33,17 @@ fn run() -> Result<(), AppError> {
 
     let rendered = match git_output {
         GitOutput::RawPassthrough(raw) => raw,
-        GitOutput::UnifiedDiff(raw) => {
+        GitOutput::UnifiedDiff {
+            patch,
+            untracked_paths,
+        } => {
             let filter = FileFilter::new(&config.filter);
-            let doc = parse_diff(&raw, &filter);
+            let doc = parse_diff(&patch, &untracked_paths, &filter)?;
             if doc.is_empty() {
                 String::new()
             } else {
                 let render_cfg = RenderConfig {
-                    use_color: resolve_use_color(
-                        config.output.as_deref(),
-                        config.color_override,
-                    ),
+                    use_color: resolve_use_color(config.output.as_deref(), config.color_override),
                     markdown: is_markdown_target(config.output.as_deref()),
                 };
                 render_document(&doc, &config.format, &render_cfg)

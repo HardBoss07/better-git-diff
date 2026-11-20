@@ -75,6 +75,7 @@ impl FileDiff {
         self.hunks
             .iter()
             .flat_map(|h| h.lines.iter())
+            .filter(|l| l.kind != LineKind::NoNewline)
             .map(|l| l.line_number)
             .max()
             .unwrap_or(0)
@@ -84,6 +85,8 @@ impl FileDiff {
 #[derive(Debug)]
 pub struct Hunk {
     pub header: String,
+    pub old_start: usize,
+    pub new_start: usize,
     pub lines: Vec<DiffLine>,
 }
 
@@ -92,6 +95,7 @@ pub enum LineKind {
     Addition,
     Deletion,
     Context,
+    NoNewline,
 }
 
 #[derive(Debug)]

@@ -83,7 +83,10 @@ impl<'a> FileFilter<'a> {
     fn is_explicitly_requested(&self, repo_rel_path: &str) -> bool {
         let normalized_target = repo_rel_path.replace('\\', "/");
         self.options.explicit_paths.iter().any(|p| {
-            let norm = p.trim_start_matches("./").trim_start_matches(".\\").replace('\\', "/");
+            let norm = p
+                .trim_start_matches("./")
+                .trim_start_matches(".\\")
+                .replace('\\', "/");
             norm == normalized_target
         })
     }
