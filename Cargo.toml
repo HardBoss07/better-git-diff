@@ -1,6 +1,6 @@
 [package]
 name = "better-git-diff"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Matteo Bosshard"]
 description = "Token-minimized, human-readable Git diff CLI for terminals and AI workflows"

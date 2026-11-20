@@ -72,7 +72,7 @@ skip:Cargo.lock
 Requires Rust (2021 edition) and `git` available on `PATH`:
 
 ```bash
-git clone [https://github.com/HardBoss07/better-git-diff.git](https://github.com/HardBoss07/better-git-diff.git)
+git clone https://github.com/HardBoss07/better-git-diff.git
 cd better-git-diff
 cargo install --path .
 ```

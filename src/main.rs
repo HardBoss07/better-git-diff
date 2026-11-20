@@ -51,5 +51,10 @@ fn run() -> Result<(), AppError> {
         }
     };
 
+    if rendered.is_empty() {
+        println!("Working tree clean.");
+        return Ok(());
+    }
+
     write_result(&rendered, config.output.as_deref())
 }
