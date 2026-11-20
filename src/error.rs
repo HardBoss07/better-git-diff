@@ -1,0 +1,25 @@
+use std::fmt;
+use std::io;
+
+#[derive(Debug)]
+pub enum AppError {
+    Io(io::Error),
+    GitExecution(String),
+}
+
+impl fmt::Display for AppError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            AppError::Io(err) => write!(f, "I/O error: {err}"),
+            AppError::GitExecution(msg) => write!(f, "git error: {msg}"),
+        }
+    }
+}
+
+impl std::error::Error for AppError {}
+
+impl From<io::Error> for AppError {
+    fn from(err: io::Error) -> Self {
+        AppError::Io(err)
+    }
+}

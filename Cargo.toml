@@ -1,0 +1,24 @@
+[package]
+name = "better-git-diff"
+version = "0.1.0"
+edition = "2021"
+description = "Token-minimized, human-readable Git diff CLI for terminals and AI workflows"
+license = "MIT"
+repository = "https://github.com/HardBoss07/better-git-diff"
+
+[[bin]]
+name = "better-git-diff"
+path = "src/main.rs"
+
+[[bin]]
+name = "bgd"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+opt-level = 3
