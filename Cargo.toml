@@ -2,20 +2,23 @@
 name = "better-git-diff"
 version = "0.1.0"
 edition = "2021"
+authors = ["Matteo Bosshard"]
 description = "Token-minimized, human-readable Git diff CLI for terminals and AI workflows"
+readme = "README.md"
 license = "MIT"
 repository = "https://github.com/HardBoss07/better-git-diff"
-
-[[bin]]
-name = "better-git-diff"
-path = "src/main.rs"
-
-[[bin]]
-name = "bgd"
-path = "src/main.rs"
+homepage = "https://github.com/HardBoss07/better-git-diff"
+documentation = "https://github.com/HardBoss07/better-git-diff#readme"
+keywords = ["git", "diff", "cli", "ai", "llm"]
+categories = ["command-line-utilities", "development-tools"]
+exclude = [
+    "benchmark_tokens.py",
+    "diff*.txt",
+    ".vscode/*",
+]
 
 [dependencies]
-clap = { version = "4.5", features = ["derive"] }
+clap = { version = "4.6", features = ["derive"] }
 
 [profile.release]
 lto = true
